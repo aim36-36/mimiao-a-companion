@@ -29,4 +29,22 @@
             "destination": "/api/index.ts"
         }
     ]
+        {
+        "source": "/api/moments/(.*)",
+        "destination": "/api/index.ts"
+    },
+    {
+        "source": "/api/story/(.*)",
+        "destination": "/api/index.ts"
+    },
+    {
+        "source": "/api/game/(.*)",
+        "destination": "/api/index.ts"
+    },
+    {
+        "source": "/api/health",
+        "destination": "/api/index.ts"
+    }
+]
+>>>>>>> da478f330b99e9e3aabf422ce8f28854bc7964de
 }
