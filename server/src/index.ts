@@ -55,22 +55,25 @@ app.use((err: Error, req: Request, res: Response, next: any) => {
 // =====================================================
 const PORT = config.PORT;
 
-app.listen(PORT, () => {
-    console.log(`
-  ╔═══════════════════════════════════════╗
-  ║   米缪OS API Server is running       ║
-  ║                                       ║
-  ║   Port: ${PORT}                       ║
-  ║   Environment: ${config.NODE_ENV.padEnd(20)} ║
-  ║   Status: Ready ✓                    ║
-  ╚═══════════════════════════════════════╝
-  `);
+// 如果不是运行在 Vercel Serverless 环境中，则启动监听
+if (process.env.VERCEL !== '1') {
+    app.listen(PORT, () => {
+        console.log(`
+    ╔═══════════════════════════════════════╗
+    ║   米缪OS API Server is running       ║
+    ║                                       ║
+    ║   Port: ${PORT}                       ║
+    ║   Environment: ${config.NODE_ENV.padEnd(20)} ║
+    ║   Status: Ready ✓                    ║
+    ╚═══════════════════════════════════════╝
+    `);
 
-    if (config.NODE_ENV === 'development') {
-        console.log(`\n  API Documentation:`);
-        console.log(`  → Health Check: http://localhost:${PORT}/health`);
-        console.log(`  → API Base URL: http://localhost:${PORT}/api\n`);
-    }
-});
+        if (config.NODE_ENV === 'development') {
+            console.log(`\n  API Documentation:`);
+            console.log(`  → Health Check: http://localhost:${PORT}/health`);
+            console.log(`  → API Base URL: http://localhost:${PORT}/api\n`);
+        }
+    });
+}
 
 export default app;
