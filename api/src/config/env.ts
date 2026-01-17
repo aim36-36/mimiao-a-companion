@@ -11,26 +11,22 @@ interface EnvConfig {
     NODE_ENV: string;
 }
 
-function getEnvVar(key: string, required: boolean = true): string {
-    const value = process.env[key];
-    if (required && !value) {
-        console.error(`ERROR: Missing required environment variable: ${key}`);
-        // 返回空字符串以允许应用启动，但在运行时可能会失败
-        return '';
-    }
-    return value || '';
-}
+const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
 
-const portEnv = getEnvVar('PORT', false);
-const PORT = portEnv ? parseInt(portEnv, 10) : 3001;
-
+// Vercel build fails with CallExpression in configuration objects.
+// We must use direct process.env access here.
 export const config: EnvConfig = {
     PORT,
-    SUPABASE_URL: getEnvVar('SUPABASE_URL'),
-    SUPABASE_ANON_KEY: getEnvVar('SUPABASE_ANON_KEY'),
-    SUPABASE_SERVICE_KEY: getEnvVar('SUPABASE_SERVICE_KEY'),
-    DEEPSEEK_API_KEY: getEnvVar('DEEPSEEK_API_KEY', false),
-    NODE_ENV: getEnvVar('NODE_ENV', false) || 'development',
+    SUPABASE_URL: process.env.SUPABASE_URL || '',
+    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY || '',
+    SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY || '',
+    DEEPSEEK_API_KEY: process.env.DEEPSEEK_API_KEY || '',
+    NODE_ENV: process.env.NODE_ENV || 'development',
 };
+
+// Runtime validation
+if (!config.SUPABASE_URL) console.warn('Missing SUPABASE_URL');
+if (!config.SUPABASE_ANON_KEY) console.warn('Missing SUPABASE_ANON_KEY');
+if (!config.SUPABASE_SERVICE_KEY) console.warn('Missing SUPABASE_SERVICE_KEY');
 
 export default config;
