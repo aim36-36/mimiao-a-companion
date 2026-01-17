@@ -12,16 +12,21 @@ interface EnvConfig {
 }
 
 const PORT = process.env.PORT ? parseInt(process.env.PORT, 10) : 3001;
+const SUPABASE_URL = process.env.SUPABASE_URL || '';
+const SUPABASE_ANON_KEY = process.env.SUPABASE_ANON_KEY || '';
+const SUPABASE_SERVICE_KEY = process.env.SUPABASE_SERVICE_KEY || '';
+const DEEPSEEK_API_KEY = process.env.DEEPSEEK_API_KEY || '';
+const NODE_ENV = process.env.NODE_ENV || 'development';
 
-// Vercel build fails with CallExpression in configuration objects.
-// We must use direct process.env access here.
+// Vercel build fails with BinaryExpression (||) in configuration objects.
+// We must use only Identifiers here.
 export const config: EnvConfig = {
     PORT,
-    SUPABASE_URL: process.env.SUPABASE_URL || '',
-    SUPABASE_ANON_KEY: process.env.SUPABASE_ANON_KEY || '',
-    SUPABASE_SERVICE_KEY: process.env.SUPABASE_SERVICE_KEY || '',
-    DEEPSEEK_API_KEY: process.env.DEEPSEEK_API_KEY || '',
-    NODE_ENV: process.env.NODE_ENV || 'development',
+    SUPABASE_URL,
+    SUPABASE_ANON_KEY,
+    SUPABASE_SERVICE_KEY,
+    DEEPSEEK_API_KEY,
+    NODE_ENV,
 };
 
 // Runtime validation
