@@ -21,8 +21,11 @@ function getEnvVar(key: string, required: boolean = true): string {
     return value || '';
 }
 
+const portEnv = getEnvVar('PORT', false);
+const PORT = portEnv ? parseInt(portEnv, 10) : 3001;
+
 export const config: EnvConfig = {
-    PORT: parseInt(getEnvVar('PORT', false) || '3001', 10),
+    PORT,
     SUPABASE_URL: getEnvVar('SUPABASE_URL'),
     SUPABASE_ANON_KEY: getEnvVar('SUPABASE_ANON_KEY'),
     SUPABASE_SERVICE_KEY: getEnvVar('SUPABASE_SERVICE_KEY'),
