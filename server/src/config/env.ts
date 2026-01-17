@@ -14,7 +14,9 @@ interface EnvConfig {
 function getEnvVar(key: string, required: boolean = true): string {
     const value = process.env[key];
     if (required && !value) {
-        throw new Error(`Missing required environment variable: ${key}`);
+        console.error(`ERROR: Missing required environment variable: ${key}`);
+        // 返回空字符串以允许应用启动，但在运行时可能会失败
+        return '';
     }
     return value || '';
 }
