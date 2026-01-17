@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>API Test</title>
+</head>
+<body>
+    <h1>API Connection Test</h1>
+    <div id="result"></div>
+    
+    <script>
+        const API_URL = 'http://localhost:3001/api';
+        const result = document.getElementById('result');
+        
+        async function testAPI() {
+            result.innerHTML = '<p>Testing API connection...</p>';
+            
+            try {
+                // Test 1: Health check
+                const healthRes = await fetch('http://localhost:3001/health');
+                const healthData = await healthRes.json();
+                result.innerHTML += `<p>✅ Health check: ${JSON.stringify(healthData)}</p>`;
+                
+                // Test 2: Register
+                const registerRes = await fetch(`${API_URL}/auth/register`, {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/json' },
+                    body: JSON.stringify({
+                        email: 'test@example.com',
+                        password: '123456',
+                        username: 'Test User'
+                    })
+                });
+                
+                const registerData = await registerRes.json();
+                result.innerHTML += `<p>Register response: ${JSON.stringify(registerData)}</p>`;
+                
+            } catch (error) {
+                result.innerHTML += `<p>❌ Error: ${error.message}</p>`;
+                console.error('Full error:', error);
+            }
+        }
+        
+        testAPI();
+    </script>
+</body>
+</html>
