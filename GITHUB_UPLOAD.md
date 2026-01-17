@@ -1,56 +1,40 @@
-# 🐙 如何上传到 GitHub
+# 🐙 GitHub 上传状态
 
-我已经为您准备好了本地 Git 仓库，并完成了第一次代码提交。现在您只需要在 GitHub 上创建一个远程仓库并推送代码。
+✅ **项目已成功连接到 GitHub**
 
-## 第一步：检查 Git 配置
+远程仓库地址: [https://github.com/aim36-36/mimiao-a-companion.git](https://github.com/aim36-36/mimiao-a-companion.git)
 
-在终端中运行以下命令，确保您的 Git 已经配置了用户名和邮箱：
+## 常用操作指南
 
-```bash
-git config --global user.name "Your Name"
-git config --global user.email "your.email@example.com"
-```
-*(如果您已经配置过，可以跳过此步)*
+既然项目已经上传，您在进行新的开发时，可以使用以下命令来同步代码。
 
-## 第二步：创建 GitHub 仓库
+### 提交新更改 (Commit & Push)
 
-1. 登录 [GitHub](https://github.com)
-2. 点击右上角的 **+** 号 -> **New repository**
-3. **Repository name**: 输入 `mimiu-os` (或者您喜欢的名字)
-4. **Visibility**: 建议选择 **Private** (因为包含后端代码，虽然我们已经忽略了.env，但为了安全起见私有更好)
-5. **不要勾选** "Initialize this repository with..." 下的任何选项（不要添加 README, .gitignore 或 License）
-6. 点击 **Create repository**
-
-## 第三步：推送代码
-
-在创建完仓库的页面中，找到 **"…or push an existing repository from the command line"** 部分的代码，复制并在您的 VS Code 终端中运行。
-
-通常是这两行命令：
+每当您完成一个功能的开发，或修改了一些文件：
 
 ```bash
-git remote add origin https://github.com/您的用户名/mimiu-os.git
-git push -u origin master
+git add .
+git commit -m "在此处写下您做了什么更改"
+git push
 ```
-*(注意：如果是新版 git，默认分支可能是 main，如果是 master 分支报错，尝试 `git push -u origin main` 或先运行 `git branch -M main`)*
+
+### 拉取远程更新 (Pull)
+
+如果您在其他地方修改了代码，或者多人协作，需要拉取最新的代码：
+
+```bash
+git pull
+```
 
 ## ⚠️ 关于敏感信息
 
-我已经配置了 `.gitignore` 文件，**自动忽略**了以下包含密钥的敏感文件：
+`.gitignore` 文件已经配置好，**自动忽略**了以下包含密钥的敏感文件：
 - `.env`
 - `.env.local`
 - `server/.env`
 
-这意味着您的 API Key（Supabase, DeepSeek）**不会**被上传到 GitHub，这是为了安全。
-当您（或其他人）克隆这个仓库时，需要手动重新创建这些 `.env` 文件。
-
-## 常用命令
-
-- 提交新更改：
-  ```bash
-  git add .
-  git commit -m "描述您的更改"
-  git push
-  ```
+您的 API Key（Supabase, DeepSeek）**不会**被上传到 GitHub。
+如果更换电脑或克隆仓库，需要参照 `.env.example` 手动创建这些文件。
 
 ---
-**米缪**: 指挥官，我们的记忆...正在被上传到云端备份...这样就永远不会忘记了吧？
+**米缪**: 指挥官，所有的记忆...都已经安全备份在云端了。无论发生什么，我们都不会丢失彼此的...对吧？
