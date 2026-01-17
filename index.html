@@ -1,81 +1,87 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
-    <title>MiMiu OS</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
-    <script>
-      tailwind.config = {
-        theme: {
-          extend: {
-            colors: {
-              paper: "#F2F0E9",
-              ink: "#231F20",
-              primary: "#D0BB95",
-              secondary: "#4FD1C5",
-              accent: "#B91C1C",
-            },
-            fontFamily: {
-              sans: ["'Noto Sans SC'", "sans-serif"],
-              display: ["'Space Grotesk'", "sans-serif"],
-            },
-            borderRadius: {
-              'sketch-1': '255px 15px 225px 15px / 15px 225px 15px 255px',
-              'sketch-2': '20px 225px 20px 225px / 225px 20px 225px 20px',
-              'sketch-sm': '25px 5px 22px 5px / 5px 22px 5px 25px',
-            },
-            boxShadow: {
-              sketch: "2px 3px 0px 0px rgba(35, 31, 32, 0.2)",
-              'sketch-lg': "4px 5px 0px 0px rgba(35, 31, 32, 0.2)",
-            }
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>MiMiu OS</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@300;400;500;700&family=Noto+Sans+SC:wght@300;400;500;700&display=swap"
+    rel="stylesheet">
+  <link href="https://fonts.googleapis.com/icon?family=Material+Icons+Round" rel="stylesheet">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            paper: "#F2F0E9",
+            ink: "#231F20",
+            primary: "#D0BB95",
+            secondary: "#4FD1C5",
+            accent: "#B91C1C",
+          },
+          fontFamily: {
+            sans: ["'Noto Sans SC'", "sans-serif"],
+            display: ["'Space Grotesk'", "sans-serif"],
+          },
+          borderRadius: {
+            'sketch-1': '255px 15px 225px 15px / 15px 225px 15px 255px',
+            'sketch-2': '20px 225px 20px 225px / 225px 20px 225px 20px',
+            'sketch-sm': '25px 5px 22px 5px / 5px 22px 5px 25px',
+          },
+          boxShadow: {
+            sketch: "2px 3px 0px 0px rgba(35, 31, 32, 0.2)",
+            'sketch-lg': "4px 5px 0px 0px rgba(35, 31, 32, 0.2)",
           }
         }
       }
-    </script>
-    <style>
-      body {
-        background-color: #F2F0E9;
-        overflow: hidden; /* Prevent body scroll */
-        overscroll-behavior: none;
-        /* Noise texture */
-        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
-      }
-      /* Custom Range Slider Styling */
-      input[type=range] {
-        -webkit-appearance: none; 
-        background: transparent; 
-      }
-      input[type=range]::-webkit-slider-thumb {
-        -webkit-appearance: none;
-        height: 20px;
-        width: 20px;
-        border-radius: 50%;
-        background: #D0BB95;
-        border: 2px solid #231F20;
-        margin-top: -8px; 
-        cursor: pointer;
-        box-shadow: 1px 1px 0px #231F20;
-      }
-      input[type=range]::-webkit-slider-runnable-track {
-        width: 100%;
-        height: 4px;
-        cursor: pointer;
-        background: rgba(35, 31, 32, 0.1);
-        border-radius: 2px;
-        border: 1px solid rgba(35, 31, 32, 0.2);
-      }
-      /* Hide Scrollbar but allow scroll */
-      .no-scrollbar::-webkit-scrollbar {
-        display: none;
-      }
-      .no-scrollbar {
-        -ms-overflow-style: none;
-        scrollbar-width: none;
-      }
-    </style>
+    }
+  </script>
+  <style>
+    body {
+      background-color: #F2F0E9;
+      /* Noise texture */
+      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)' opacity='0.08'/%3E%3C/svg%3E");
+    }
+
+    /* Custom Range Slider Styling */
+    input[type=range] {
+      -webkit-appearance: none;
+      background: transparent;
+    }
+
+    input[type=range]::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      height: 20px;
+      width: 20px;
+      border-radius: 50%;
+      background: #D0BB95;
+      border: 2px solid #231F20;
+      margin-top: -8px;
+      cursor: pointer;
+      box-shadow: 1px 1px 0px #231F20;
+    }
+
+    input[type=range]::-webkit-slider-runnable-track {
+      width: 100%;
+      height: 4px;
+      cursor: pointer;
+      background: rgba(35, 31, 32, 0.1);
+      border-radius: 2px;
+      border: 1px solid rgba(35, 31, 32, 0.2);
+    }
+
+    /* Hide Scrollbar but allow scroll */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+    }
+  </style>
   <script type="importmap">
 {
   "imports": {
@@ -85,10 +91,12 @@
   }
 }
 </script>
-<link rel="stylesheet" href="/index.css">
+  <link rel="stylesheet" href="/index.css">
 </head>
-  <body>
-    <div id="root"></div>
+
+<body>
+  <div id="root"></div>
   <script type="module" src="/index.tsx"></script>
 </body>
+
 </html>
